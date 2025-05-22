@@ -11,13 +11,13 @@ from httpx import HTTPError, Timeout
 
 logger = logging.getLogger(__name__)
 
-max_depth = 1
+max_depth = 2
 timeout = 10
 filter_key_words = ""
 
 def update_variables(settings):
     global max_depth, timeout, filter_key_words
-    max_depth = settings["max_depth"]
+    max_depth = settings.get("max_depth", 2)
     timeout = settings["timeout"]
     filter_key_words = settings["filter_key_words"]
 
