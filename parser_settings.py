@@ -52,11 +52,12 @@ def before_rabbithole_splits_text(doc: Document, cat) -> Document:
 
     """
     # You can check if the document source is a URL and apply your custom parser
-    if doc.metadata.get("source_type") == "URL":
-        # Instantiate your custom parser with appropriate settings
-        parser = RecursiveUrlParser(url=doc.page_content, chunk_size=chunk_size, chunk_overlap=chunk_overlap, recursive=recursive, **option)
-        parsed_content = parser.parse()  # This should return the parsed content
-        doc.page_content = parsed_content  # Update the document content with parsed content
+    for d in doc:
+        if doc.metadata.get("source_type") == "URL":
+            # Instantiate your custom parser with appropriate settings
+            parser = RecursiveUrlParser(url=doc.page_content, chunk_size=chunk_size, chunk_overlap=chunk_overlap, recursive=recursive, **option)
+            parsed_content = parser.parse()  # This should return the parsed content
+            doc.page_content = parsed_content  # Update the document content with parsed content
 
     return doc
 
