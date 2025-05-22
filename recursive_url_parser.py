@@ -31,7 +31,7 @@ class RecursiveUrlParser(BaseBlobParser):
     def __init__(
         self,
         *,
-        max_depth: int = 1,
+        max_depth: int = 2,
         features: str = "lxml",
         get_text_separator: str = "",
         filter_keywords: list[str] = None,
@@ -47,11 +47,11 @@ class RecursiveUrlParser(BaseBlobParser):
                 "`pip install beautifulsoup4`"
             )
 
-        self.max_depth = max_depth
+        self.max_depth = max_depth if max_depth is not None else 2
         self.bs_kwargs = {"features": features, **kwargs}
         self.get_text_separator = get_text_separator
         self.filter_keywords = filter_keywords or []
-        self.timeout = timeout
+        self.timeout = timeout if timeout is not None else 10
         self.visited_urls = set()
 
     def _fetch_url_content(self, url: str) -> str:
