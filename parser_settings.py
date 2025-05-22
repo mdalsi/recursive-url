@@ -1,6 +1,7 @@
 from langchain.docstore.document import Document
 from typing import List
-from recursive_url_parser import RecursiveUrlParser  # Import your custom parser
+from cat.mad_hatter.decorators import hook
+from .recursive_url_parser import RecursiveUrlParser  # Import your custom parser
 
 chunk_size = 512  # Chunk size for the parser
 chunk_overlap = 128  # Chunk overlap for the parser
