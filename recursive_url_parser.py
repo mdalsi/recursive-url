@@ -19,7 +19,7 @@ def update_variables(settings):
     global max_depth, timeout, filter_key_words
     max_depth = settings.get("max_depth", 2)
     timeout = settings.get("timeout", 10)
-    filter_key_words = settings["filter_key_words"]
+    filter_key_words = settings.get("filter_key_words", [])
 
 class RecursiveUrlParser(BaseBlobParser):
     """Parse HTML content recursively from a given URL."""
