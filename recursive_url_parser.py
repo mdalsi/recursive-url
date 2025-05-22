@@ -126,5 +126,5 @@ def rabbithole_instantiates_parsers(file_handlers: dict, cat) -> dict:
     """Hook the available parsers for ingesting files in the declarative memory."""
     settings = cat.mad_hatter.get_plugin().load_settings()
     update_variables(settings)
-    file_handlers["text/html"] = RecursiveUrlParser(filter_keywords=filter_key_words.split(','), max_depth=max_depth, timeout=timeout)
+    file_handlers["text/html"] = RecursiveUrlParser(filter_keywords=filter_key_words, max_depth=max_depth, timeout=timeout)
     return file_handlers
