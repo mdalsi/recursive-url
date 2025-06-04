@@ -16,7 +16,7 @@ option = {
 def update_variables(settings):
     global url, chunk_size, chunk_overlap, recursive, option
     chunk_size = settings.get("chunk_size", 512)
-    chunk_overlap = settings["chunk_overlap"]
+    chunk_overlap = settings.get("chunk_overlap", 0)  # Default to 0 if not provided
     recursive = settings["recursive"]
     option["exclude_dirs"] = settings["exclude_dirs"]
     option["max_depth"] = settings["max_depth"]
